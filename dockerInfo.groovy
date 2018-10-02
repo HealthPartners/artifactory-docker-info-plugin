@@ -3,7 +3,7 @@ import groovy.json.JsonBuilder
 
 executions {
 
-    dockerInfo(httpMethod: 'GET') { params ->
+    dockerInfo(httpMethod: 'GET', users: ['anonymous'], groups: ['readers']) { params ->
         def dockerImage = params?.get('dockerImage')?.get(0) as String
         def dockerTag = params?.get('dockerTag')?.get(0) as String ?: 'latest'
         def dockerRepo = params?.get('dockerRepo')?.get(0) as String ?: 'docker-local'
